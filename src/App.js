@@ -34,8 +34,7 @@ class App extends Component {
     const value = event.target.value;
 
     this.setState({
-      name: value,
-      manufacturer: event.target.value
+      name: value
     })
   }
 
