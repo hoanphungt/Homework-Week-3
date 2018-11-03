@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import { connect } from 'react-redux';
 
 const data = {
   "Ivel Z3": {
@@ -33,7 +34,15 @@ class App extends Component {
     const value = event.target.value;
 
     this.setState({
-      name: value
+      name: value,
+      manufacturer: event.target.value
+    })
+  }
+
+  addModel = () => {
+    this.props.dispatch({
+      type: 'ADD_MODEL',
+      payload: data[this.state.name]
     })
   }
   
@@ -46,10 +55,10 @@ class App extends Component {
           <option value={modelName[1]}>{modelName[1]} ({data["Bally Astrocade"].year})</option>
           <option value={modelName[2]}>{modelName[2]} ({data["Sord M200 Smart Home Computer"].year})</option>
           <option value={modelName[3]}>{modelName[3]} ({data["Commodore 64"].year})</option>
-        </select>
+        </select> <button onClick={() => this.addModel()}>Add</button>
       </div>
     );
   }
 }
 
-export default App;
+export default connect()(App);
