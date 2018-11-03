@@ -9,7 +9,7 @@ export default class ModelDetails extends Component {
 
     render() {
         return (
-            <div class="modelDetails">
+            <div className="modelDetails">
                 {this.props.models.map(model => (
                     <ul>
                         <li>Name: {model.name}</li>
