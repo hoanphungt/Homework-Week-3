@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
+import ModelDetails from './ModelDetails';
 
 const data = {
   "Ivel Z3": {
@@ -39,6 +40,7 @@ class App extends Component {
   }
 
   addModel = () => {
+    data[this.state.name].name = this.state.name
     this.props.dispatch({
       type: 'ADD_MODEL',
       payload: data[this.state.name]
@@ -48,6 +50,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <ModelDetails models={this.props.models}/>
         <select onChange={this.updateSelection}>
           <option value="">-- pick a model --</option>
           <option value={modelName[0]}>{modelName[0]} ({data["Ivel Z3"].year})</option>
@@ -60,4 +63,10 @@ class App extends Component {
   }
 }
 
-export default connect()(App);
+const mapStateToProps = (state) => {
+  return {
+    models: state
+  }
+}
+
+export default connect(mapStateToProps)(App);

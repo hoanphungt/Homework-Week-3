@@ -1,0 +1,11 @@
+.modelDetails {
+    font-size: 16px;
+}
+
+.modelDetails ul {
+    text-align: left;
+    width: 350px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
