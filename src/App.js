@@ -25,13 +25,22 @@ const data = {
 }
 
 const modelName = Object.keys(data)
-console.log(modelName)
 
 class App extends Component {
+  state = {}
+  
+  updateSelection = (event) => {
+    const value = event.target.value;
+
+    this.setState({
+      name: value
+    })
+  }
+  
   render() {
     return (
       <div className="App">
-        <select>
+        <select onChange={this.updateSelection}>
           <option value="">-- pick a model --</option>
           <option value={modelName[0]}>{modelName[0]} ({data["Ivel Z3"].year})</option>
           <option value={modelName[1]}>{modelName[1]} ({data["Bally Astrocade"].year})</option>
